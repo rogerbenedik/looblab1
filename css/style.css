@@ -24,7 +24,7 @@ body{
     min-height: 700px;
     background-color: rgba( 0, 0, 0, 0.7);
 } 
-#home-section .home-inner{
+#home-head-section .home-inner{
     padding-top: 150px;
 }
 #home-section .card-form{

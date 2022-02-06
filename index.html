@@ -13,8 +13,8 @@
     <title>LoopLab</title>
 </head>
 
-<body>
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+<body datas-spy="scroll" data-target="#main-nav" id="home">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top" id="main-nav">
         <div class="container">
             <a href="index.html" class="navbar-brand">LoopLAB</a>
             <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -39,7 +39,7 @@
         </div>
     </nav>
 
-    <header id="home-section">
+    <header id="home-head-section">
         <div class="dark-overlay">
             <div class="home-inner container">
                 <div class="row">
@@ -293,6 +293,38 @@
         </div>
     </footer>
 
+    <div class="modal fade text-dark" id="contactModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Contact Us</h5>
+                    <button class="close" data-dimiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea class="form-control"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn-primary btn-block">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
@@ -302,7 +334,19 @@
         integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
         crossorigin="anonymous"></script>
     <script>
-        $(`#year`).text(new Date().getFullYear());
+        $('#year').text(new Date().getFullYear());
+        $('body').scrollspy({target:'#main-nav'});
+        $("#main-nav a").on('click', function (event){
+            if (this.hash !==""){
+                event.preventDefault();
+                const hash = this.hash;
+            $('html, body').animate({
+                scrollTop: $(hash).offset().top
+            }, 800, function (){
+                window.location.hash = hash;
+            });
+            }
+        })
     </script>
 
 </body>
